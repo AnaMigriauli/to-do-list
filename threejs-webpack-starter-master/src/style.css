@@ -1,16 +1,21 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
 * {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
 }
 
 html,
 body {
+  max-width: 1440px;
   height: 100%;
-  font-family: "Poppins";
 }
 .header {
-  margin: 40px 175px 24px 175px;
+  margin-top: 40px;
+  margin-bottom: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,11 +42,11 @@ body {
 
 .new-item {
   display: inline-flex;
-  /* align-items: center; */
-
-  margin-left: 172px;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 100px; */
   margin-bottom: 26px;
-  margin-top: 26px;
+  /* margin-top: 26px; */
   cursor: pointer;
 }
 
@@ -51,7 +56,7 @@ body {
   width: 504px;
   height: auto;
   outline: none;
-  font-size: 14px;
+  font-size: 16px;
   border: none;
   border-radius: 3px;
 }
@@ -80,49 +85,177 @@ body {
   transition: all 0.5s;
   background-color: #930101;
 }
+.btn:focus {
+  border: none;
+}
+
 .main-container {
+  transform: translateY(150px);
+  top: 0;
   position: absolute;
   z-index: 2;
+  margin-left: 100px;
 }
 .img-container {
-  background-image: url("./img/kaitlyn-baker-vZJdYl5JVXY-unsplash.jpg");
+  background-image: url("./img/andrew-neel-cckf4TsHAuw-unsplash.jpg");
   position: relative;
-  /* overflow: hidden; */
   height: 100%;
-  opacity: 0.7;
+  opacity: 0.6;
+  border-radius: 3px;
+  overflow: hidden;
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
-#myUL {
+.item {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-left: 172px;
-  list-style: none;
+  padding: 5px;
+  /* margin-left: 172px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #930101;
 }
-li {
+
+.input-controller {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+.text {
+  width: 504px;
+  /* width: 100%; */
+  /* height: 28px; */
+  /* padding: 5px; */
+  display: block;
+  background-color: transparent;
+  border: 1px solid transparent;
+  /* resize: none; */
+  font-size: 16px;
+  outline: none;
+  transition: all 0.2s;
+  color: #333333;
+  overflow: hidden;
+  /* line-height: 1.2; */
+}
+.text:focus {
+  background-color: #ffffff5b;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.edit-controller {
+  display: flex;
   gap: 20px;
+  align-items: center;
+  /* justify-content: space-between; */
 }
-
-.button-delete {
+.delete-button {
   width: 18px;
   height: 18px;
-  background-image: url(img/icons/9699945831553239397.svg);
+  padding: 2px;
+  background-image: url(img/icons/320632131667326703.svg);
+
   background-size: cover;
   cursor: pointer;
   background-repeat: no-repeat;
   border: none;
+  display: inline-block;
+}
+.delete-button:hover {
+  opacity: 0.7;
 }
 
-.button-edit {
+.edit-button {
   width: 18px;
   height: 18px;
-  background-image: url(img/icons/17530504711583238441.svg);
+  padding: 2px;
+  background-image: url(img/icons/20763406381571662156.svg);
   background-size: cover;
   cursor: pointer;
   background-repeat: no-repeat;
   border: none;
+  display: inline-block;
+}
+.edit-button:hover {
+  opacity: 0.7;
+}
+.submit-button {
+  width: 18px;
+  height: 18px;
+  padding: 2px;
+  background-image: url(img/icons/5759056751663771569.svg);
+  background-size: cover;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  border: none;
+  display: inline-block;
+}
+.submit-button:hover {
+  opacity: 0.7;
+}
+.item-name {
+  font-size: 14px;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: block;
+}
+
+.active {
+  display: none;
+}
+
+@media (max-width: 770px) {
+  .header-logo {
+    font-size: 30px;
+  }
+  .main-container {
+    width: 80%;
+    margin-left: 20px;
+  }
+  .delete-button,
+  .edit-button,
+  .submit-button {
+    width: 16px;
+  }
+  .new-item {
+    width: 90%;
+  }
+  .to-do-container {
+    width: 90%;
+    margin: 0;
+  }
+
+  .input-controller {
+    width: 90%;
+  }
+  .text {
+    font-size: 14px;
+  }
+  .heder-data,
+  .header-time {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .header-data-data,
+  .header-data-time {
+    font-size: 14px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 570px) {
+  .header-logo {
+    font-size: 25px;
+  }
+  .main-container {
+    width: 70%;
+  }
+  .to-do-container {
+    width: 80%;
+    margin: 0;
+  }
 }
