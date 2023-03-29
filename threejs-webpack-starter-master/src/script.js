@@ -1,7 +1,5 @@
 import "./style.css";
-// import * as THREE from "three";
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-// import * as dat from "dat.gui";
+// import "./mixins.css";
 
 //to do list
 
@@ -23,26 +21,26 @@ function createItem(myInput) {
 btn.addEventListener("click", () => {
   createItem(myInput);
 });
-document.addEventListener("keydow", (e) => {
+document.addEventListener("keydown", (e) => {
   console.log(e.key);
-  if ((e.key = "Enter")) {
+  if (e.key === "Enter") {
     createItem(myInput);
   }
 });
-
+myInput.addEventListener("input", autoResize);
 function displayItems() {
   let items = "";
   for (let i = 0; i < itemsArray.length; i++) {
     items += `<div class="item">
     <div class="input-controller">
-      <textarea class="text" disabled autofocus  type='text' style='height:fit-content'>${itemsArray[i]}</textarea>
+      <span class="text" disabled autofocus  type='text' style='height:fit-content'>${itemsArray[i]}</span>
       </div>
     <div class="edit-controller">
-      <i class="delete-button"></i>
-      <i class="edit-button"></i>
+      <i class="delete-button btnCommon"></i>
+      <i class="edit-button btnCommon"></i>
     </div>
     <div class="update-controller active">
-      <i class="submit-button"></i>
+      <i class="submit-button btnCommon"></i>
     </div>
   </div>
 </div>`;
@@ -64,16 +62,23 @@ function activateEditListeners() {
   const editController = document.querySelectorAll(".edit-controller");
   const updateController = document.querySelectorAll(".update-controller");
   const text = document.querySelectorAll(".text");
+  const inputController = document.querySelectorAll(".input-controller");
   editBtn.forEach((eb, i) =>
     eb.addEventListener("click", () => {
       updateController[i].style.display = "block";
       editController[i].style.display = "none";
       text[i].disabled = false;
-      //move the cursor to the end
-      const end = text[i].value.length;
-      text[i].setSelectionRange(end, end);
-      text[i].focus();
-      text[i].addEventListener("input", autoResize);
+      const a = text[i].textContent;
+      const textA = document.createElement("textarea");
+      textA.classList.add("textA");
+      text[i].remove();
+      inputController[i].appendChild(textA);
+      textA.textContent = a;
+      // move the cursor to the end
+      const end = textA.textContent.length;
+      textA.setSelectionRange(end, end);
+      textA.focus();
+      textA.addEventListener("input", autoResize);
     })
   );
 }
@@ -86,10 +91,14 @@ function autoResize() {
 
 function activateSubmitListeners() {
   const submitBtn = document.querySelectorAll(".submit-button");
-  const text = document.querySelectorAll(".text");
+  const sp = document.querySelectorAll(".text");
   submitBtn.forEach((sb, i) =>
     sb.addEventListener("click", () => {
-      updateItem(text[i].value, i);
+      const el =
+        sb.parentElement.parentNode.firstElementChild.firstElementChild;
+
+      sb.parentElement.parentNode.firstElementChild.replaceChild(sp[i], el);
+      updateItem((sp[i].textContent = el.value), i);
     })
   );
 }
@@ -133,94 +142,3 @@ window.onload = function () {
   getCurrentTime();
   displayItems();
 };
-
-// const addItem = function () {
-//   if (!myInput.value) {
-//     return;
-//   }
-//   let list = document.createElement("li");
-//   list.classList.add("list");
-//   myUL.appendChild(list);
-//   //Div
-//   const firstDiv = document.createElement("div");
-//   firstDiv.classList.add("firstDiv");
-//   list.appendChild(firstDiv);
-
-//   const secondDiv = document.createElement("div");
-//   secondDiv.classList.add("secondDiv");
-//   list.appendChild(secondDiv);
-
-//   //Add Item
-//   const text = document.createElement("span");
-//   text.classList.add("item-name");
-//   text.textContent = myInput.value;
-//   itemsArray.push(text.textContent);
-//   localStorage.setItem("items", JSON.stringify(itemsArray));
-//   location.reload();
-//   firstDiv.appendChild(text);
-
-//   //Add Edit & delete buttons
-//   const deleteBtn = document.createElement("i");
-//   deleteBtn.classList.add("button-delete");
-//   secondDiv.appendChild(deleteBtn);
-//   deleteBtn.addEventListener("click", btnDelete);
-
-//   const editBtn = document.createElement("i");
-//   editBtn.classList.add("button-edit");
-//   secondDiv.appendChild(editBtn);
-//   editBtn.addEventListener("click", btnEdit);
-
-//   //Clear Input
-//   myInput.value = "";
-
-// };
-// btn.addEventListener("click", addItem);
-//Delete btn
-
-// const btnDelete = function () {
-//   this.parentNode.parentElement.remove();
-// };
-
-// //Edit btn
-// const btnEdit = function () {
-//   const EditText =
-//     this.parentElement.previousSibling.lastElementChild.textContent;
-//   this.parentElement.previousSibling.remove();
-//   this.parentElement.remove();
-//   const l = document.querySelectorAll(".list");
-//   let i = document.createElement("input");
-//   i.classList.add("myInput");
-//   i.value = EditText;
-//   l.forEach((a) => a.appendChild(i));
-
-//   // Submit BTN
-//   let bttn = document.createElement("i");
-//   bttn.classList.add("button-submit");
-//   l.forEach((c) => c.appendChild(bttn));
-//   bttn.addEventListener("click", btnSubmit);
-// };
-
-// Submit;
-
-// const btnSubmit = function () {
-//   const submitValue = this.previousSibling.value;
-
-//   this.parentNode.innerHTML = "";
-
-//   let list = document.querySelectorAll(".list");
-//   //Div
-//   const firstDiv = document.createElement("div");
-//   firstDiv.classList.add("firstDiv");
-//   // list.appendChild(firstDiv);
-
-//   const secondDiv = document.createElement("div");
-//   secondDiv.classList.add("secondDiv");
-//   // list.appendChild(secondDiv);
-
-//   list.forEach((a) => a.appendChild(firstDiv));
-
-//   text.textContent = submitValue;
-//   firstDiv.appendChild(text);
-//   secondDiv.appendChild(deleteBtn);
-//   secondDiv.appendChild(editBtn);
-// };

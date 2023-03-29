@@ -10,18 +10,21 @@
 
 html,
 body {
-  max-width: 1440px;
+  /* 10px/16px*100 */
+  font-size: 62.5%;
+  max-width: 100vw;
   height: 100%;
 }
+
 .header {
-  margin-top: 40px;
-  margin-bottom: 25px;
+  margin-top: 4rem;
+  margin-bottom: 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .header-logo {
-  font-size: 40px;
+  font-size: 4rem;
   text-transform: uppercase;
   color: #333333;
 }
@@ -29,54 +32,51 @@ body {
 .heder-data,
 .header-time {
   text-transform: uppercase;
-  font-size: 18px;
-  margin-right: 8px;
-  vertical-align: middle;
+  font-size: 1.8rem;
+  margin-right: 0.8rem;
   color: #930101b0;
 }
 .header-data-data,
 .header-data-time {
-  font-size: 16px;
-  margin-right: 16px;
+  font-size: 1.6rem;
+  margin-right: 1.6rem;
 }
 
 .new-item {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* margin-left: 100px; */
-  margin-bottom: 26px;
-  /* margin-top: 26px; */
+  margin-bottom: 2.6rem;
   cursor: pointer;
 }
 
 .myInput {
-  padding: 8px 16px;
-  margin-right: 5px;
-  width: 504px;
-  height: auto;
+  padding: 0.8rem 1.6rem;
+  margin-right: 0.5rem;
+  width: 50rem;
+  height: 3.5rem;
   outline: none;
-  font-size: 16px;
+  font-size: 1.6rem;
   border: none;
-  border-radius: 3px;
+  border-radius: 0.3rem;
 }
 
 .myInput::placeholder {
-  font-size: 12px;
+  font-size: 1.2rem;
   color: #c3c3c3;
   width: auto;
 }
 
 .btn {
-  padding: 8px 16px;
-  width: 100px;
-  height: auto;
-  border-radius: 3px;
+  padding: 0.8rem 1.6rem;
+  width: 10rem;
+  height: 3.5rem;
+  border-radius: 0.3rem;
   border: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 1.4rem;
   color: #ffffff;
   background-color: #930101b0;
   cursor: pointer;
@@ -90,32 +90,31 @@ body {
 }
 
 .main-container {
-  transform: translateY(150px);
+  transform: translateY(15rem);
   top: 0;
   position: absolute;
   z-index: 2;
-  margin-left: 100px;
+  /* margin-left: 20rem; */
 }
 .img-container {
   background-image: url("./img/andrew-neel-cckf4TsHAuw-unsplash.jpg");
   position: relative;
+  width: 100%;
   height: 100%;
   opacity: 0.6;
-  border-radius: 3px;
-  overflow: hidden;
-
+  border-radius: 0.3rem;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 .item {
   display: flex;
-  padding: 5px;
-  /* margin-left: 172px; */
+  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #930101;
+  border-bottom: 0.1rem solid #930101;
+  word-wrap: break-word;
 }
 
 .input-controller {
@@ -125,79 +124,60 @@ body {
   margin: 0;
 }
 .text {
-  width: 504px;
-  /* width: 100%; */
-  /* height: 28px; */
-  /* padding: 5px; */
+  width: 50rem;
   display: block;
-  background-color: transparent;
-  border: 1px solid transparent;
-  /* resize: none; */
-  font-size: 16px;
+  font-size: 1.6rem;
+  color: #333333;
+}
+.textA,
+.textA:focus {
+  width: 50rem;
+  display: block;
+  background-color: #ffffff5b;
+  border: 0.1rem solid transparent;
+  resize: none;
+  font-size: 1.6rem;
   outline: none;
   transition: all 0.2s;
   color: #333333;
-  overflow: hidden;
-  /* line-height: 1.2; */
-}
-.text:focus {
-  background-color: #ffffff5b;
-  border: 1px solid transparent;
-  border-radius: 3px;
+  /* overflow: hidden; */
+  border-radius: 0.3rem;
 }
 
 .edit-controller {
   display: flex;
-  gap: 20px;
+  gap: 2rem;
   align-items: center;
-  /* justify-content: space-between; */
 }
-.delete-button {
-  width: 18px;
-  height: 18px;
-  padding: 2px;
-  background-image: url(img/icons/320632131667326703.svg);
-
+.btnCommon {
+  width: 1.8rem;
+  height: 1.8rem;
+  padding: 0.2rem;
   background-size: cover;
   cursor: pointer;
   background-repeat: no-repeat;
   border: none;
   display: inline-block;
 }
-.delete-button:hover {
+.delete-button {
+  background-image: url(img/icons/320632131667326703.svg);
+}
+.delete-button:hover,
+.edit-button:hover,
+.submit-button:hover {
   opacity: 0.7;
 }
 
 .edit-button {
-  width: 18px;
-  height: 18px;
-  padding: 2px;
   background-image: url(img/icons/20763406381571662156.svg);
-  background-size: cover;
-  cursor: pointer;
-  background-repeat: no-repeat;
-  border: none;
-  display: inline-block;
 }
-.edit-button:hover {
-  opacity: 0.7;
-}
+
 .submit-button {
-  width: 18px;
-  height: 18px;
-  padding: 2px;
   background-image: url(img/icons/5759056751663771569.svg);
-  background-size: cover;
-  cursor: pointer;
-  background-repeat: no-repeat;
-  border: none;
-  display: inline-block;
 }
-.submit-button:hover {
-  opacity: 0.7;
-}
+
 .item-name {
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 1.5;
   text-overflow: ellipsis;
   word-wrap: break-word;
@@ -207,55 +187,24 @@ body {
 .active {
   display: none;
 }
-
-@media (max-width: 770px) {
-  .header-logo {
-    font-size: 30px;
+@media (min-width: 60rem) {
+  html,
+  body {
+    font-size: 52.5%;
   }
   .main-container {
-    width: 80%;
-    margin-left: 20px;
-  }
-  .delete-button,
-  .edit-button,
-  .submit-button {
-    width: 16px;
-  }
-  .new-item {
-    width: 90%;
-  }
-  .to-do-container {
-    width: 90%;
-    margin: 0;
-  }
-
-  .input-controller {
-    width: 90%;
-  }
-  .text {
-    font-size: 14px;
-  }
-  .heder-data,
-  .header-time {
-    font-size: 14px;
-    margin-right: 5px;
-  }
-  .header-data-data,
-  .header-data-time {
-    font-size: 14px;
-    margin-right: 10px;
+    margin-left: 10rem;
   }
 }
 
-@media (max-width: 570px) {
-  .header-logo {
-    font-size: 25px;
+@media (min-width: 10.56rem) {
+  html,
+  body {
+    font-size: 62.5%;
+    max-width: 100vw;
+    height: 100%;
   }
   .main-container {
-    width: 70%;
-  }
-  .to-do-container {
-    width: 80%;
-    margin: 0;
+    margin-left: 20rem;
   }
 }
