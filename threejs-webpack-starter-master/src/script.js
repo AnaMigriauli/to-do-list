@@ -126,16 +126,12 @@ function getCurrentTime() {
   const currentMonth = now.toLocaleString("en-US", { month: "long" });
 
   const year = now.getFullYear();
-  let hours = now.getHours();
-  hours = formatTime(hours);
-  let minutes = now.getMinutes();
+  headerDataTime.textContent = now.toLocaleString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   headerDataData.textContent = `${currentMonth} ${day} ,${year}`;
-  headerDataTime.textContent = `${hours}:${minutes}`;
-}
-
-function formatTime(time) {
-  return time < 10 ? `0${time}` : time;
 }
 
 window.onload = function () {
